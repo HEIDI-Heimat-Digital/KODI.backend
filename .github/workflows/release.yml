@@ -73,6 +73,7 @@ jobs:
           key: ${{ secrets.GESEKE_SSHKEY }}
           script: |
             cd ${{ secrets.GESEKE_APPDIR }}
+            /root/.nvm/versions/node/v18.18.2/bin/npm install -g npm@latest
             /root/.nvm/versions/node/v18.18.2/bin/npm install --production
             /root/.nvm/versions/node/v18.18.2/bin/npm run lint .
             /root/.nvm/versions/node/v18.18.2/bin/pm2 restart API

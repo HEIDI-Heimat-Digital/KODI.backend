@@ -1,0 +1,2369 @@
+{
+	"info": {
+		"_postman_id": "a5628af4-5656-4ff7-98f8-0ed5ab3d38de",
+		"name": "Heidi Local Legacy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30955250"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "favorites",
+					"item": [
+						{
+							"name": "add new favorite",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"listingId\": 5,\n    \"cityId\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/19/favorites",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"19",
+										"favorites"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "add new favorite",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"listingId\": 1,\n    \"cityId\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/users/19/favorites",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												"19",
+												"favorites"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Embedder-Policy",
+											"value": "require-corp"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "27"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1b-klyWz6EHrgMmN49dLAHbuiqpwZ4\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Dec 2023 17:29:44 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"id\": 2\n}"
+								}
+							]
+						},
+						{
+							"name": "get all favorites",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/19/favorites",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"19",
+										"favorites"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get the favourite",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/users/19/favorites",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												"19",
+												"favorites"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Embedder-Policy",
+											"value": "require-corp"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "121"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"79-Ch8rh6PxNoXi7S2hpre/S7HqBc8\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Dec 2023 17:49:07 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 19,\n            \"cityId\": 1,\n            \"listingId\": 1\n        },\n        {\n            \"id\": 2,\n            \"userId\": 19,\n            \"cityId\": 1,\n            \"listingId\": 1\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "get the favourite listings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/19/favorites/listings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"19",
+										"favorites",
+										"listings"
+									],
+									"query": [
+										{
+											"key": "categoryId",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "cityId",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get the favourite listings",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"listingId\": 1,\n    \"cityId\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/users/19/favorites/listings",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"users",
+												"19",
+												"favorites",
+												"listings"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Embedder-Policy",
+											"value": "require-corp"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "569"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"239-kIVZJr1nv/Ap4S6KyxNXvqyUKaQ\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Dec 2023 17:49:20 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"userId\": 2,\n            \"title\": \"Sample City\",\n            \"place\": null,\n            \"description\": \"This is a sample city listing.\",\n            \"externalId\": null,\n            \"categoryId\": 1,\n            \"subcategoryId\": 1,\n            \"address\": \"Sample Address\",\n            \"email\": \"sample@example.com\",\n            \"phone\": \"1234567890\",\n            \"website\": \"www.sample.com\",\n            \"price\": 100,\n            \"discountPrice\": null,\n            \"logo\": \"logo.jpg\",\n            \"statusId\": 3,\n            \"sourceId\": 1,\n            \"longitude\": 1.234567,\n            \"latitude\": 2.345678,\n            \"villageId\": 1,\n            \"startDate\": null,\n            \"endDate\": null,\n            \"createdAt\": \"2023-12-05T18:59:35.000Z\",\n            \"pdf\": null,\n            \"expiryDate\": \"2023-12-20T18:59:35.000Z\",\n            \"zipcode\": 12345,\n            \"cityId\": \"1\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "delete favorite",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/19/favorites/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"19",
+										"favorites",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    if (pm.response.code == 200) {",
+									"        const token = jsonData.data.accessToken;",
+									"        const refreshToken = jsonData.data.refreshToken;",
+									"        pm.collectionVariables.set(\"bearer_token\", token);",
+									"        pm.collectionVariables.set(\"refresh_token\", refreshToken);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"johndoe\",\n  \"password\": \"MyPassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"johndoe\",\n    \"password\":\"MyPassword123\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1007"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3ef-Rh/dAEccad4m6hyN1K8PtQTVlLw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Nov 2023 16:23:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"cityUsers\": [],\n        \"userId\": 19,\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE5LCJyb2xlSWQiOjMsImlhdCI6MTcwMDg0Mjk4NCwiZXhwIjoxNzAwODQzNTg0fQ.Xile3dW_ShuVYdfSUgezjWVDSezwtNP-mUgzCADjDQ8C0VNUv46T553rseti4vWUwuU3FApJa7p51mRItfY18A0PZbEQYcEx9uOgBML_SWXJEfhypceaPt5jE514tcKOSoJT5uwLbFRyylvpX_XqWtuPK0AJhKYd8qd5-h6pje91ZtLUW-3sHJAqBJ3bayDyKMv6JOOslD0p-1uoF9RaP3I0IumO92rO9R-AQvT_WhxGQqIiIb30Opclbt01poz2v91B2jZms-pnE5l_T1-8qUU5jqhvRTMTdOKOv01m6TMo47L22n91rjbWZ-7M1k_c6sfCbSk7oFV0r6XuyY_AFg\",\n        \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE5LCJyb2xlSWQiOjMsImlhdCI6MTcwMDg0Mjk4NCwiZXhwIjoxNzAxMjc0OTg0fQ.q0S5OUZv321UjOYSAYj1KQurkhrNUq5SJIoTalti_tzb_WuhP_46_uOIeVqRMK3-eWknjqm4_fnVPMhGgXzuJ1zSectgYiN7VD5oRh3xW52ngaJoRvIeBQAo0fCj9xhjg7F5XyCpEFRdiFhh6nUdFxxTw466URCgnBfxcGfMPj5yZLBUGSiRQhfX4T1cycfCZqxs2QBo6dDRfPiSwGbp-QuvM2P3ZJCl3PuxYLNyy__KS_Gxb-kjY_oqEKGd3ETkMp4dY1N-G0qJRJEVM_vruya_uQRNyKAZMfIIUTYsl4-6j05eS76QXmzhA8TLkpOJJQvYJ3J264kTmc6SIu7i6Q\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/19",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newPassword\":\"MyPassword123\",\n    \"currentPassword\":\"MyPassword125\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/19",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/19/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"19",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"johndoe\",\n    \"language\": \"en\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/forgotPassword",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"forgotPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "1,",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "johndoe",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List login devices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE5LCJyb2xlSWQiOjMsImlhdCI6MTcwMTM1MTk4NSwiZXhwIjoxNzAxNzgzOTg1fQ.u_1XwXwgo-uLdWQJo-9HgAukHBFgBn6efscYFijQpg5-M-2pT6R6i84hH5OS1NwI4cNAY2IytcokBpJZ1WKu1BzByJAqz-zHmJpCMkBKFCDHE_1TyYl7rHbltHFGlp0iVj0hVoPHwPTuJmvFUUeFczdbWuFbb1MXPhyVqvVa0MdejJRsWfEe45Z1q4A2sGAEDiMdkV9HOmY27yII7koSYhDviEzVbjtZEVCPtjvtdx6rhkSooSw3tQfmCNvOTjKkE3h4PLj3t1k-djRmHG3E64wem3-SOtD7GDxFrHic1pmXAudH_hWT63jJV10KcH1r014Vh7K-Nh2oqo7erHD-BA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/19/loginDevices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"19",
+								"loginDevices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user Profile Picture upload",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/aneesh/Pictures/Heidi_Logo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/users/19/imageUpload",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"19",
+								"imageUpload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List cities",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"johndoe\",\n    \"password\":\"MyPassword123\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cities",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user listings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/19/listings?pageNo=4&pageSize=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"19",
+								"listings"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "4"
+								},
+								{
+									"key": "pageSize",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get user listings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/19/listings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"19",
+										"listings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4893"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"131d-+M5lJ5w8lXWkvZdAWng7qYHbV3c\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 14 Dec 2023 18:28:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 18,\n            \"userId\": 2,\n            \"title\": \"Sample City3\",\n            \"place\": null,\n            \"description\": \"This is a sample city listing.\",\n            \"externalId\": null,\n            \"categoryId\": 1,\n            \"subcategoryId\": 1,\n            \"address\": \"Sample Address\",\n            \"email\": \"sample@example.com\",\n            \"phone\": \"1234567890\",\n            \"website\": \"www.sample.com\",\n            \"price\": 100,\n            \"discountPrice\": null,\n            \"logo\": \"logo.jpg\",\n            \"statusId\": 1,\n            \"sourceId\": 1,\n            \"longitude\": 1.234567,\n            \"latitude\": 2.345678,\n            \"villageId\": 1,\n            \"startDate\": null,\n            \"endDate\": null,\n            \"createdAt\": \"2023-12-11T17:27:23.000Z\",\n            \"pdf\": null,\n            \"expiryDate\": \"2023-12-26T17:27:23.000Z\",\n            \"zipcode\": 12345,\n            \"cityId\": 1\n        },\n        {\n            \"id\": 17,\n            \"userId\": 2,\n            \"title\": \"Sample City3\",\n            \"place\": null,\n            \"description\": \"This is a sample city listing.\",\n            \"externalId\": null,\n            \"categoryId\": 1,\n            \"subcategoryId\": 1,\n            \"address\": \"Sample Address\",\n            \"email\": \"sample@example.com\",\n            \"phone\": \"1234567890\",\n            \"website\": \"www.sample.com\",\n            \"price\": 100,\n            \"discountPrice\": null,\n            \"logo\": \"\",\n            \"statusId\": 1,\n            \"sourceId\": 1,\n            \"longitude\": 1.234567,\n            \"latitude\": 2.345678,\n            \"villageId\": 1,\n            \"startDate\": null,\n            \"endDate\": null,\n            \"createdAt\": \"2023-12-11T15:28:08.000Z\",\n            \"pdf\": null,\n            \"expiryDate\": \"2023-12-26T15:28:08.000Z\",\n            \"zipcode\": 12345,\n            \"cityId\": 1\n        },\n        {\n            \"id\": 16,\n            \"userId\": 2,\n            \"title\": \"Sample City3\",\n            \"place\": null,\n            \"description\": \"This is a sample city listing2\",\n            \"externalId\": null,\n            \"categoryId\": 1,\n            \"subcategoryId\": 1,\n            \"address\": \"Sample Address\",\n            \"email\": \"sample@example.com\",\n            \"phone\": \"1234567890\",\n            \"website\": \"www.sample.com\",\n            \"price\": 100,\n            \"discountPrice\": null,\n            \"logo\": \"user_19/city_1_listing_16\",\n            \"statusId\": 1,\n            \"sourceId\": 1,\n            \"longitude\": 1.234567,\n            \"latitude\": 2.345678,\n            \"villageId\": 1,\n            \"startDate\": null,\n            \"endDate\": null,\n            \"createdAt\": \"2023-12-11T15:08:51.000Z\",\n            \"pdf\": null,\n            \"expiryDate\": null,\n            \"zipcode\": 12345,\n            \"cityId\": 1\n        },\n        {\n            \"id\": 15,\n            \"userId\": 2,\n            \"title\": \"Sample City3\",\n            \"place\": null,\n            \"description\": \"This is a sample city listing.\",\n            \"externalId\": null,\n            \"categoryId\": 1,\n            \"subcategoryId\": 1,\n            \"address\": \"Sample Address\",\n            \"email\": \"sample@example.com\",\n            \"phone\": \"1234567890\",\n            \"website\": \"www.sample.com\",\n            \"price\": 100,\n            \"discountPrice\": null,\n            \"logo\": \"logo.jpg\",\n            \"statusId\": 1,\n            \"sourceId\": 1,\n            \"longitude\": 1.234567,\n            \"latitude\": 2.345678,\n            \"villageId\": 1,\n            \"startDate\": null,\n            \"endDate\": null,\n            \"createdAt\": \"2023-12-11T14:46:03.000Z\",\n            \"pdf\": null,\n            \"expiryDate\": \"2023-12-26T14:46:03.000Z\",\n            \"zipcode\": 12345,\n            \"cityId\": 1\n        },\n        {\n            \"id\": 14,\n            \"userId\": 2,\n            \"title\": \"Sample City3\",\n            \"place\": null,\n            \"description\": \"This is a sample city listing.\",\n            \"externalId\": null,\n            \"categoryId\": 1,\n            \"subcategoryId\": 1,\n            \"address\": \"Sample Address\",\n            \"email\": \"sample@example.com\",\n            \"phone\": \"1234567890\",\n            \"website\": \"www.sample.com\",\n            \"price\": 100,\n            \"discountPrice\": null,\n            \"logo\": \"logo.jpg\",\n            \"statusId\": 3,\n            \"sourceId\": 1,\n            \"longitude\": 1.234567,\n            \"latitude\": 2.345678,\n            \"villageId\": 1,\n            \"startDate\": null,\n            \"endDate\": null,\n            \"createdAt\": \"2023-12-07T19:45:04.000Z\",\n            \"pdf\": null,\n            \"expiryDate\": \"2023-12-22T19:45:04.000Z\",\n            \"zipcode\": 12345,\n            \"cityId\": 1\n        },\n        {\n            \"id\": 13,\n            \"userId\": 2,\n            \"title\": \"Sample City3\",\n            \"place\": null,\n            \"description\": \"This is a sample city listing.\",\n            \"externalId\": null,\n            \"categoryId\": 1,\n            \"subcategoryId\": 1,\n            \"address\": \"Sample Address\",\n            \"email\": \"sample@example.com\",\n            \"phone\": \"1234567890\",\n            \"website\": \"www.sample.com\",\n            \"price\": 100,\n            \"discountPrice\": null,\n            \"logo\": \"logo.jpg\",\n            \"statusId\": 3,\n            \"sourceId\": 1,\n            \"longitude\": 1.234567,\n            \"latitude\": 2.345678,\n            \"villageId\": 1,\n            \"startDate\": null,\n            \"endDate\": null,\n            \"createdAt\": \"2023-12-07T19:44:08.000Z\",\n            \"pdf\": null,\n            \"expiryDate\": \"2023-12-22T19:44:08.000Z\",\n            \"zipcode\": 12345,\n            \"cityId\": 1\n        },\n        {\n            \"id\": 12,\n            \"userId\": 2,\n            \"title\": \"Sample City3\",\n            \"place\": null,\n            \"description\": \"This is a sample city listing.\",\n            \"externalId\": null,\n            \"categoryId\": 1,\n            \"subcategoryId\": 1,\n            \"address\": \"Sample Address\",\n            \"email\": \"sample@example.com\",\n            \"phone\": \"1234567890\",\n            \"website\": \"www.sample.com\",\n            \"price\": 100,\n            \"discountPrice\": null,\n            \"logo\": \"logo.jpg\",\n            \"statusId\": 3,\n            \"sourceId\": 1,\n            \"longitude\": 1.234567,\n            \"latitude\": 2.345678,\n            \"villageId\": 1,\n            \"startDate\": null,\n            \"endDate\": null,\n            \"createdAt\": \"2023-12-07T19:43:17.000Z\",\n            \"pdf\": null,\n            \"expiryDate\": \"2023-12-22T19:43:17.000Z\",\n            \"zipcode\": 12345,\n            \"cityId\": 1\n        },\n        {\n            \"id\": 11,\n            \"userId\": 2,\n            \"title\": \"Sample City3\",\n            \"place\": null,\n            \"description\": \"This is a sample city listing.\",\n            \"externalId\": null,\n            \"categoryId\": 1,\n            \"subcategoryId\": 1,\n            \"address\": \"Sample Address\",\n            \"email\": \"sample@example.com\",\n            \"phone\": \"1234567890\",\n            \"website\": \"www.sample.com\",\n            \"price\": 100,\n            \"discountPrice\": null,\n            \"logo\": \"user_19/city_1_listing_11\",\n            \"statusId\": 3,\n            \"sourceId\": 1,\n            \"longitude\": 1.234567,\n            \"latitude\": 2.345678,\n            \"villageId\": 1,\n            \"startDate\": null,\n            \"endDate\": null,\n            \"createdAt\": \"2023-12-07T19:35:59.000Z\",\n            \"pdf\": null,\n            \"expiryDate\": \"2023-12-22T19:35:59.000Z\",\n            \"zipcode\": 12345,\n            \"cityId\": 1\n        },\n        {\n            \"id\": 10,\n            \"userId\": 2,\n            \"title\": \"Sample City3\",\n            \"place\": null,\n            \"description\": \"This is a sample city listing.\",\n            \"externalId\": null,\n            \"categoryId\": 1,\n            \"subcategoryId\": 1,\n            \"address\": \"Sample Address\",\n            \"email\": \"sample@example.com\",\n            \"phone\": \"1234567890\",\n            \"website\": \"www.sample.com\",\n            \"price\": 100,\n            \"discountPrice\": null,\n            \"logo\": \"logo.jpg\",\n            \"statusId\": 3,\n            \"sourceId\": 1,\n            \"longitude\": 1.234567,\n            \"latitude\": 2.345678,\n            \"villageId\": 1,\n            \"startDate\": null,\n            \"endDate\": null,\n            \"createdAt\": \"2023-12-07T16:07:12.000Z\",\n            \"pdf\": null,\n            \"expiryDate\": \"2023-12-22T16:07:12.000Z\",\n            \"zipcode\": 12345,\n            \"cityId\": 1\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/27",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"27"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CityListings",
+			"item": [
+				{
+					"name": "CityListings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cities/{{city_id}}/listings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cities",
+								"{{city_id}}",
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new City Listing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Set city listing Id for future operation\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"city_listing_id\", jsonData.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 34,\n    \"villageId\": 1,\n    \"title\": \"Sample City\",\n    \"place\": \"Sample Place\",\n    \"description\": \"This is a sample city listing.\",\n    \"categoryId\": 1,\n    \"subcategoryId\": 1,\n    \"statusId\": 1,\n    \"address\": \"Sample Address\",\n    \"email\": \"sample@example.com\",\n    \"phone\": \"1234567890\",\n    \"website\": \"www.sample.com\",\n    \"price\": 100,\n    \"discountPrice\": 0,\n    \"longitude\": 1.234567,\n    \"latitude\": 2.345678,\n    \"zipcode\": \"12345\",\n    \"endDate\": \"2023-12-07T14:58:45.000Z\",\n    \"startDate\": \"2022-12-07T14:58:45.000Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cities/{{city_id}}/listings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cities",
+								"{{city_id}}",
+								"listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CityListing by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cities/1/listings/19",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cities",
+								"1",
+								"listings",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update City Listing",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"This is a sample city listing2\",\n    \"statusId\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cities/{{city_id}}/listings/{{city_listing_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cities",
+								"{{city_id}}",
+								"listings",
+								"{{city_listing_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add image to listing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/aneesh/Pictures/Heidi_Logo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/cities/1/listings/11/imageUpload",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cities",
+								"1",
+								"listings",
+								"11",
+								"imageUpload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "get categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get sub categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories/1/subcategories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								"1",
+								"subcategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get categories listingCount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories/listingsCount",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								"listingsCount"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "with city id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/categories/listingsCount?cityId=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"categories",
+										"listingsCount"
+									],
+									"query": [
+										{
+											"key": "cityId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39-zvGhECy6pK13TN87+YDIZlWXmm4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Dec 2023 12:00:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"categoryId\": 1,\n            \"count\": 15\n        }\n    ]\n}"
+						},
+						{
+							"name": "without city id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/categories/listingsCount",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"categories",
+										"listingsCount"
+									],
+									"query": [
+										{
+											"key": "cityId",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3e-kUuiHXlN+dZxuGplb3OsB5htLKw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Dec 2023 12:01:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"categoryId\": 1,\n            \"totalCount\": 15\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "citizen services",
+			"item": [
+				{
+					"name": "Get citizen services",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/citizenServices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"citizenServices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get digital management services",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/citizenServices/digitalManagement",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"citizenServices",
+								"digitalManagement"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Upload Multiple images",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": [
+								"/Users/user6/Downloads/Lost & Found Images/Defaultimage1.png",
+								"/Users/user6/Downloads/Lost & Found Images/Defaultimage2.png",
+								"/Users/user6/Downloads/Lost & Found Images/Defaultimage3.png"
+							]
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/cities/1/listings/7/imageUpload",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cities",
+						"1",
+						"listings",
+						"7",
+						"imageUpload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get forum list for city",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{city_base_url}}/cities/1/forums",
+					"host": [
+						"{{city_base_url}}"
+					],
+					"path": [
+						"cities",
+						"1",
+						"forums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send contact us request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"aneeshjose.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/contactUs",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"contactUs"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "johndoe",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "City listing By id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/cities/1/listings/32",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cities",
+						"1",
+						"listings",
+						"32"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user forums",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsInJvbGVJZCI6MywiaWF0IjoxNjk5NDI4OTg0LCJleHAiOjE2OTk0Mjk1ODR9.FjYEUz_eMgqKM4iFQUtoFNXB1aRGmvq4sooAULw6hkEYIEoxCPomTgXcsG02_vZKzqdprVL3hiARJVU0nfLZw3TxszBn0_d0vQOy6XXf3BgOVXIfJmxQrrHq1fpovdNu72NJsZfa3OiNFwxL4nbzazob4hS6CWaBn8pMSqy_1QZDRT1ZA80DrDDktgHLmKAgQ_PN7X-2oZx8UsQyG1cZDznlpjQ5ww1lpG7Vm9aR6-P1bRdxHHxPimb5I1lXKmJiZxNrx4PaX2Zsdr8x61kD4MAPXDTV0ROvy1OBCAvxcMlDcjBWPOFiF_IPDW18WyU473N0mDa9RRXGq8dGT1Ygkg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{city_base_url}}/users/3/forums",
+					"host": [
+						"{{city_base_url}}"
+					],
+					"path": [
+						"users",
+						"3",
+						"forums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new forum",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsInJvbGVJZCI6MywiaWF0IjoxNjk5MzcwNDM5LCJleHAiOjE2OTkzNzEwMzl9.ko91BTTCRn6qO_auD8uMlGXUp7cAXd-2MvsPndueAvpVB7eWK5dPLuBLWDQ7Ti8v2iFo96pcY5U39mUO2OpIfc0cXOK973tpdovzjCtzUpzSvbtffxum20CwqZHESuQ3OBUp-yr8BxrnvkWR2oBN0niZCm3LCoCv0hwubpD3ieIFd9rUqMOxDWchTFR3Y2c1wo6sEMMf3qrdmoJCYZR0Rx4Bsj75QbM9BAU6uTFIvwkvQ8SfruueqcVqSC_tCZt6AcgGLlmeCxV1IaqNR1zESoIqh4ayTIhyF6Vwy-UE4dIGuAbpLEcW8r06JvTixq4DP5-zmyWwOD7QN4eaHwHITQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"forumName\": \"Test 2 isPrivate\",\n    \"description\": \"dddd#\",\n    \"isPrivate\":true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{city_base_url}}/cities/1/forums",
+					"host": [
+						"{{city_base_url}}"
+					],
+					"path": [
+						"cities",
+						"1",
+						"forums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Member Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsInJvbGVJZCI6MywiaWF0IjoxNjk5NDMwNjk2LCJleHAiOjE2OTk0MzEyOTZ9.0BBiwSDl3NavOHvdLmV2o4_ihRFcwuaUQ_XVJcJoAD7DVIzS9IIae8Xpk3YrHe2LEVPcBg24fjBevTikUZ2xca1j9fdErnLhCPEQXGP7PChwmksT3q26G4eUn-YL4pt16l4cOTi5qerZSdfp5imO1I-kzm3smZbpCREy9BAlR9jo4SjNApaZ8NyHcb8TRPscr0SIuF2MfmuPHUq5axkaJ5PFRUQzcCsSFmDCd8wa2dPyZLLf-jL591XPgwtirPwfbznLF26a6ErWHxtLiWUZDNKq94Gwdj0pd2-rOgShgC6Q86rNfCRghzWQc1j4L__IEg8BE1pOidoR4_SgE0w8Ig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"forumName\": \"Test\",\n    \"description\": \"dddd#\",\n    \"isPrivate\":false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{city_base_url}}/cities/1/forums/15/memberRequests",
+					"host": [
+						"{{city_base_url}}"
+					],
+					"path": [
+						"cities",
+						"1",
+						"forums",
+						"15",
+						"memberRequests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Member Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsInJvbGVJZCI6MywiaWF0IjoxNjk5MzcwNDM5LCJleHAiOjE2OTkzNzEwMzl9.ko91BTTCRn6qO_auD8uMlGXUp7cAXd-2MvsPndueAvpVB7eWK5dPLuBLWDQ7Ti8v2iFo96pcY5U39mUO2OpIfc0cXOK973tpdovzjCtzUpzSvbtffxum20CwqZHESuQ3OBUp-yr8BxrnvkWR2oBN0niZCm3LCoCv0hwubpD3ieIFd9rUqMOxDWchTFR3Y2c1wo6sEMMf3qrdmoJCYZR0Rx4Bsj75QbM9BAU6uTFIvwkvQ8SfruueqcVqSC_tCZt6AcgGLlmeCxV1IaqNR1zESoIqh4ayTIhyF6Vwy-UE4dIGuAbpLEcW8r06JvTixq4DP5-zmyWwOD7QN4eaHwHITQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accept\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{city_base_url}}/cities/1/forums/8/memberRequests/5",
+					"host": [
+						"{{city_base_url}}"
+					],
+					"path": [
+						"cities",
+						"1",
+						"forums",
+						"8",
+						"memberRequests",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Memeber",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsInJvbGVJZCI6MywiaWF0IjoxNjk5NDMwNjk2LCJleHAiOjE2OTk0MzEyOTZ9.0BBiwSDl3NavOHvdLmV2o4_ihRFcwuaUQ_XVJcJoAD7DVIzS9IIae8Xpk3YrHe2LEVPcBg24fjBevTikUZ2xca1j9fdErnLhCPEQXGP7PChwmksT3q26G4eUn-YL4pt16l4cOTi5qerZSdfp5imO1I-kzm3smZbpCREy9BAlR9jo4SjNApaZ8NyHcb8TRPscr0SIuF2MfmuPHUq5axkaJ5PFRUQzcCsSFmDCd8wa2dPyZLLf-jL591XPgwtirPwfbznLF26a6ErWHxtLiWUZDNKq94Gwdj0pd2-rOgShgC6Q86rNfCRghzWQc1j4L__IEg8BE1pOidoR4_SgE0w8Ig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accept\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{city_base_url}}/cities/1/forums/14/members/25",
+					"host": [
+						"{{city_base_url}}"
+					],
+					"path": [
+						"cities",
+						"1",
+						"forums",
+						"14",
+						"members",
+						"25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Memberships forum",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsInJvbGVJZCI6MywiaWF0IjoxNjk5NDMwNjk2LCJleHAiOjE2OTk0MzEyOTZ9.0BBiwSDl3NavOHvdLmV2o4_ihRFcwuaUQ_XVJcJoAD7DVIzS9IIae8Xpk3YrHe2LEVPcBg24fjBevTikUZ2xca1j9fdErnLhCPEQXGP7PChwmksT3q26G4eUn-YL4pt16l4cOTi5qerZSdfp5imO1I-kzm3smZbpCREy9BAlR9jo4SjNApaZ8NyHcb8TRPscr0SIuF2MfmuPHUq5axkaJ5PFRUQzcCsSFmDCd8wa2dPyZLLf-jL591XPgwtirPwfbznLF26a6ErWHxtLiWUZDNKq94Gwdj0pd2-rOgShgC6Q86rNfCRghzWQc1j4L__IEg8BE1pOidoR4_SgE0w8Ig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"forumName\": \"Test\",\n    \"description\": \"dddd#\",\n    \"isPrivate\":false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{city_base_url}}/users/6/cities/1/checkMembership?forumIds=1,2,8,6,11",
+					"host": [
+						"{{city_base_url}}"
+					],
+					"path": [
+						"users",
+						"6",
+						"cities",
+						"1",
+						"checkMembership"
+					],
+					"query": [
+						{
+							"key": "forumIds",
+							"value": "1,2,8,6,11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Memberships forum Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsInJvbGVJZCI6MywiaWF0IjoxNjk5NDMwNjk2LCJleHAiOjE2OTk0MzEyOTZ9.0BBiwSDl3NavOHvdLmV2o4_ihRFcwuaUQ_XVJcJoAD7DVIzS9IIae8Xpk3YrHe2LEVPcBg24fjBevTikUZ2xca1j9fdErnLhCPEQXGP7PChwmksT3q26G4eUn-YL4pt16l4cOTi5qerZSdfp5imO1I-kzm3smZbpCREy9BAlR9jo4SjNApaZ8NyHcb8TRPscr0SIuF2MfmuPHUq5axkaJ5PFRUQzcCsSFmDCd8wa2dPyZLLf-jL591XPgwtirPwfbznLF26a6ErWHxtLiWUZDNKq94Gwdj0pd2-rOgShgC6Q86rNfCRghzWQc1j4L__IEg8BE1pOidoR4_SgE0w8Ig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"forumName\": \"Test\",\n    \"description\": \"dddd#\",\n    \"isPrivate\":false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{city_base_url}}/users/6/cities/1/checkMembership?forumIds=1,2,8,6,11",
+					"host": [
+						"{{city_base_url}}"
+					],
+					"path": [
+						"users",
+						"6",
+						"cities",
+						"1",
+						"checkMembership"
+					],
+					"query": [
+						{
+							"key": "forumIds",
+							"value": "1,2,8,6,11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Python",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/convert?pdf_url=https://developement1heidi.obs.eu-de.otc.t-systems.com/user_2/city_1_listing_43_PDF.pdf&page_number=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"convert"
+					],
+					"query": [
+						{
+							"key": "pdf_url",
+							"value": "https://developement1heidi.obs.eu-de.otc.t-systems.com/user_2/city_1_listing_43_PDF.pdf"
+						},
+						{
+							"key": "page_number",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get listings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/listings",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"listings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get statuses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/status",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get more info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/moreInfo",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"moreInfo"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "en",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get villages",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/cities/1/villages",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cities",
+						"1",
+						"villages"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "cityId",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get villages",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cities/1/villages",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cities",
+								"1",
+								"villages"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "cityId",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Embedder-Policy",
+							"value": "require-corp"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3d-bnVOC/Ot6gUbm21ms93FW/xN6fI\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 14 Dec 2023 15:49:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"first village\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearer_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "127.0.0.1:3001",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "127.0.0.1:3001",
+			"type": "string"
+		},
+		{
+			"key": "city_base_url",
+			"value": "127.0.0.1:3002",
+			"type": "string"
+		},
+		{
+			"key": "bearer_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": ""
+		},
+		{
+			"key": "city_id",
+			"value": "2",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,989 @@
+{
+	"info": {
+		"_postman_id": "bcbfde3b-3a3f-4cdd-880e-4472ab2c1cba",
+		"name": "Heidi Local Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30955250"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "CityListings admin user",
+					"item": [
+						{
+							"name": "Login admin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Add test access token to collection variables\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    if (pm.response.code == 200) {",
+											"        const token = jsonData.data.accessToken;",
+											"        const refreshToken = jsonData.data.refreshToken;",
+											"        pm.expect(token).not.eql(null);",
+											"        pm.expect(token).not.eq('');",
+											"        ",
+											"        pm.collectionVariables.set(\"bearer_token\", token);",
+											"        pm.collectionVariables.set(\"refresh_token\", refreshToken);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"current_user_id\", \"johndoe\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"{{current_user_id}}\",\n  \"password\": \"MyPassword123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CityListings",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cities/{{city_id}}/listings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cities",
+										"{{city_id}}",
+										"listings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add new City Listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Set city listing Id for future operation\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.collectionVariables.set(\"city_listing_id\", jsonData.id);",
+											"});",
+											"",
+											"// set request data to variables so that we can use it in further checks",
+											"var requestData = JSON.parse(pm.request.body['raw']);",
+											"delete requestData.userId; // to remove the userId as it will be different there",
+											"requestData = JSON.stringify(requestData);",
+											"pm.collectionVariables.set(\"city_listing_create_data\", requestData)",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": 34,\n    \"villageId\": 1,\n    \"title\": \"Sample City\",\n    \"place\": \"Sample Place\",\n    \"description\": \"This is a sample city listing.\",\n    \"categoryId\": 1,\n    \"subcategoryId\": 1,\n    \"statusId\": 1,\n    \"address\": \"Sample Address\",\n    \"email\": \"sample@example.com\",\n    \"phone\": \"1234567890\",\n    \"website\": \"www.sample.com\",\n    \"price\": 100,\n    \"discountPrice\": 0,\n    \"longitude\": 1.234567,\n    \"latitude\": 2.345678,\n    \"zipcode\": \"12345\",\n    \"endDate\": \"2023-12-07T14:58:45.000Z\",\n    \"startDate\": \"2022-12-07T14:58:45.000Z\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/cities/{{city_id}}/listings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cities",
+										"{{city_id}}",
+										"listings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CityListing by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Local JSON object",
+											"var localJsonObject = JSON.parse(pm.collectionVariables.get(\"city_listing_create_data\"));",
+											"var responseData = pm.response.json();",
+											"pm.test(`Check sent-key = sent value in response data`, function () {",
+											"    Object.keys(localJsonObject).forEach(function (key) {",
+											"        pm.expect(responseData.data[key]).to.eql(localJsonObject[key]);",
+											"    });",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cities/{{city_id}}/listings/{{city_listing_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cities",
+										"{{city_id}}",
+										"listings",
+										"{{city_listing_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update City Listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var localJsonObject = JSON.parse(pm.collectionVariables.get(\"city_listing_create_data\"));",
+											"",
+											"var requestData = JSON.parse(pm.request.body['raw']);",
+											"Object.keys(requestData).forEach(function (key) {",
+											"    localJsonObject[key]=requestData[key]",
+											"});",
+											"requestData = JSON.stringify(requestData);",
+											"pm.collectionVariables.set(\"city_listing_create_data\", requestData)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"This is a sample city listing2\",\n    \"statusId\":1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/cities/{{city_id}}/listings/{{city_listing_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cities",
+										"{{city_id}}",
+										"listings",
+										"{{city_listing_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CityListing by id after update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Local JSON object",
+											"var localJsonObject = JSON.parse(pm.collectionVariables.get(\"city_listing_create_data\"));",
+											"var responseData = pm.response.json();",
+											"pm.test(`Check sent-key = sent value in response data`, function () {",
+											"    Object.keys(localJsonObject).forEach(function (key) {",
+											"        pm.expect(responseData.data[key]).to.eql(localJsonObject[key]);",
+											"    });",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cities/{{city_id}}/listings/{{city_listing_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cities",
+										"{{city_id}}",
+										"listings",
+										"{{city_listing_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add image to listing",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/aneesh/Pictures/Heidi_Logo.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/cities/{{city_id}}/listings/{{city_listing_id}}/imageUpload",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cities",
+										"{{city_id}}",
+										"listings",
+										"{{city_listing_id}}",
+										"imageUpload"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CityListings non admin user",
+					"item": [
+						{
+							"name": "Login user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Add test access token to collection variables\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    if (pm.response.code == 200) {",
+											"        const token = jsonData.data.accessToken;",
+											"        const refreshToken = jsonData.data.refreshToken;",
+											"        pm.expect(token).not.eql(null);",
+											"        pm.expect(token).not.eq('');",
+											"        ",
+											"        pm.collectionVariables.set(\"bearer_token\", token);",
+											"        pm.collectionVariables.set(\"refresh_token\", refreshToken);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"current_user_id\", \"johndoe1\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"{{current_user_id}}\",\n  \"password\": \"MyPassword123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CityListings",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cities/{{city_id}}/listings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cities",
+										"{{city_id}}",
+										"listings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add new City Listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Set city listing Id for future operation\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.collectionVariables.set(\"city_listing_id\", jsonData.id);",
+											"});",
+											"",
+											"// set request data to variables so that we can use it in further checks",
+											"var requestData = JSON.parse(pm.request.body['raw']);",
+											"delete requestData.userId; // to remove the userId as it will be different there",
+											"requestData = JSON.stringify(requestData);",
+											"pm.collectionVariables.set(\"city_listing_create_data\", requestData)",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"{{current_user_id}}\",\n    \"villageId\": 1,\n    \"title\": \"Sample City\",\n    \"description\": \"This is a sample city listing.\",\n    \"categoryId\": 1,\n    \"subcategoryId\": 1,\n    \"address\": \"Sample Address\",\n    \"email\": \"sample@example.com\",\n    \"phone\": \"1234567890\",\n    \"website\": \"www.sample.com\",\n    \"price\": 100,\n    \"discountPrice\": null,\n    \"longitude\": 1.234567,\n    \"latitude\": 2.345678,\n    \"zipcode\": 12345\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/cities/{{city_id}}/listings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cities",
+										"{{city_id}}",
+										"listings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CityListing by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Local JSON object",
+											"var localJsonObject = JSON.parse(pm.collectionVariables.get(\"city_listing_create_data\"));",
+											"var responseData = pm.response.json();",
+											"pm.test(`Check sent-key = sent value in response data`, function () {",
+											"    Object.keys(localJsonObject).forEach(function (key) {",
+											"        pm.expect(responseData.data[key]).to.eql(localJsonObject[key]);",
+											"    });",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cities/{{city_id}}/listings/{{city_listing_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cities",
+										"{{city_id}}",
+										"listings",
+										"{{city_listing_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update City Listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Don't have access\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"You dont have access to change this option\");",
+											"    pm.expect(jsonData.status).to.eql(\"error\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"This is a sample city listing2\",\n    \"statusId\":1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/cities/{{city_id}}/listings/{{city_listing_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cities",
+										"{{city_id}}",
+										"listings",
+										"{{city_listing_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add image to listing",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "enctype",
+										"value": "multipart/form-data",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/aneesh/Pictures/Heidi_Logo.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/cities/{{city_id}}/listings/{{city_listing_id}}/imageUpload",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cities",
+										"{{city_id}}",
+										"listings",
+										"{{city_listing_id}}",
+										"imageUpload"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "favorites",
+					"item": [
+						{
+							"name": "Login user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Add test access token to collection variables\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    if (pm.response.code == 200) {",
+											"        const token = jsonData.data.accessToken;",
+											"        const refreshToken = jsonData.data.refreshToken;",
+											"        pm.expect(token).not.eql(null);",
+											"        pm.expect(token).not.eq('');",
+											"        ",
+											"        pm.collectionVariables.set(\"bearer_token\", token);",
+											"        pm.collectionVariables.set(\"refresh_token\", refreshToken);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"current_user_name\", \"johndoe1\");",
+											"pm.variables.set(\"current_user_id\", \"23\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"{{current_user_name}}\",\n  \"password\": \"MyPassword123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all favorites",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"pm.test(\"Success\", function () {    ",
+											"    pm.expect(jsonData.status).to.eql(\"success\");",
+											"});",
+											"const respArr = jsonData.data;",
+											"pm.collectionVariables.set(\"current_favorite_length\", respArr.length);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"current_user_name\", \"johndoe1\");",
+											"pm.variables.set(\"current_user_id\", \"23\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/{{current_user_id}}/favorites",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"{{current_user_id}}",
+										"favorites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add new favorite",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.collectionVariables.set(\"new_favorite\", pm.response.json()['id'])",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"current_user_name\", \"johndoe1\");",
+											"pm.variables.set(\"current_user_id\", \"23\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"listingId\": 32,\n    \"cityId\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/{{current_user_id}}/favorites",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"{{current_user_id}}",
+										"favorites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all favorites after adding new favorite",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"pm.test(\"Success\", function () {",
+											"    pm.expect(jsonData.status).to.eql(\"success\");",
+											"});",
+											"pm.test(\"Old data length + 1\", function () {",
+											"    const prevLen = Number(pm.collectionVariables.get(\"current_favorite_length\"));",
+											"    pm.expect(jsonData.data.length).to.eq(prevLen + 1);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"current_user_name\", \"johndoe1\");",
+											"pm.variables.set(\"current_user_id\", \"23\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/{{current_user_id}}/favorites",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"{{current_user_id}}",
+										"favorites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get the favourite listings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Success\", function () {",
+											"    pm.expect(pm.response.json().status).to.eql(\"success\");",
+											"});",
+											"",
+											"const keys = [",
+											"    \"id\",",
+											"    \"userId\",",
+											"    \"title\",",
+											"    \"place\",",
+											"    \"description\",",
+											"    \"externalId\",",
+											"    \"categoryId\",",
+											"    \"subcategoryId\",",
+											"    \"address\",",
+											"    \"email\",",
+											"    \"phone\",",
+											"    \"website\",",
+											"    \"price\",",
+											"    \"discountPrice\",",
+											"    \"logo\",",
+											"    \"statusId\",",
+											"    \"sourceId\",",
+											"    \"longitude\",",
+											"    \"latitude\",",
+											"    \"villageId\",",
+											"    \"startDate\",",
+											"    \"endDate\",",
+											"    \"createdAt\",",
+											"    \"pdf\",",
+											"    \"expiryDate\",",
+											"    \"zipcode\",",
+											"    \"cityId\"",
+											"];",
+											"pm.test(\"Expected data keys\", function () {",
+											"    const datas = pm.response.json()['data'];",
+											"    datas.forEach(function (data) {",
+											"        const dataKeys = Object.keys(data);",
+											"        pm.expect(arraysHaveSameElements(dataKeys, keys)).to.be.true;",
+											"    });",
+											"});",
+											"",
+											"function arraysHaveSameElements(arr1, arr2) {",
+											"    if (arr1.length !== arr2.length) {",
+											"        return false;",
+											"    }",
+											"",
+											"    const arr1InArr2 = arr1.every(element => arr2.includes(element));",
+											"",
+											"    const arr2InArr1 = arr2.every(element => arr1.includes(element));",
+											"",
+											"    return arr1InArr2 && arr2InArr1;",
+											"}",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"current_user_name\", \"johndoe1\");",
+											"pm.variables.set(\"current_user_id\", \"23\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/{{current_user_id}}/favorites/listings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"{{current_user_id}}",
+										"favorites",
+										"listings"
+									],
+									"query": [
+										{
+											"key": "categoryId",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "cityId",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete favorite",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"current_user_name\", \"johndoe1\");",
+											"pm.variables.set(\"current_user_id\", \"23\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/{{current_user_id}}/favorites/{{new_favorite}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"{{current_user_id}}",
+										"favorites",
+										"{{new_favorite}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearer_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "127.0.0.1:3001",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "127.0.0.1:3001",
+			"type": "string"
+		},
+		{
+			"key": "city_base_url",
+			"value": "127.0.0.1:3002",
+			"type": "string"
+		},
+		{
+			"key": "bearer_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": ""
+		},
+		{
+			"key": "city_id",
+			"value": "2",
+			"type": "string"
+		},
+		{
+			"key": "city_listing_id",
+			"value": ""
+		},
+		{
+			"key": "city_listing_create_data",
+			"value": ""
+		},
+		{
+			"key": "current_favorite_length",
+			"value": ""
+		},
+		{
+			"key": "new_favorite",
+			"value": ""
+		}
+	]
+}

@@ -26,7 +26,7 @@ const app = express();
 
 // defining an array to work as the database (temporary solution)
 const message = {
-    message: "Hello world! Welcome to HEIDI!!",
+    message: "Hello world!! Welcome to HEIDI!!",
 };
 
 // adding Helmet to enhance your Rest API's security

@@ -19,5 +19,7 @@ module.exports = {
     CITIZEN_SERVICES_TABLE: 'citizen_services',
     MORE_INFO_TABLE: 'moreinfo',
     CITIZEN_SERVICES_DATA_TABLE: 'citizen_service_data',
-    ADVERTISEMENTS: 'advertisements'
+    ADVERTISEMENTS: 'advertisements',
+    FIREBASE_TOKEN: 'firebase_token'
+
 }

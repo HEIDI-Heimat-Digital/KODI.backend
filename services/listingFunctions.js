@@ -8,7 +8,7 @@ const source = require("../constants/source");
 const roles = require("../constants/roles");
 const getDateInFormate = require("../utils/getDateInFormate");
 const TurndownService = require('turndown')
-const showdown  = require('showdown')
+const showdown = require('showdown')
 const defaultImageCount = require("../constants/defaultImagesInBucketCount");
 const DEFAULTIMAGE = "Defaultimage";
 const sendPushNotification = require("../services/sendPushNotification");
@@ -18,10 +18,10 @@ async function createListing(cityIds, payload, userId, roleId) {
     let user = {};
     const cities = {};
     const hasDefaultImage =
-    (payload.logo !== undefined && payload.logo !== null) ||
-    payload.hasAttachment
-        ? false
-        : true;
+        (payload.logo !== undefined && payload.logo !== null) ||
+            payload.hasAttachment
+            ? false
+            : true;
 
     if (!payload) {
         throw new AppError(`Empty payload sent`, 400);
@@ -30,7 +30,7 @@ async function createListing(cityIds, payload, userId, roleId) {
     if (!cityIds) {
         throw new AppError(`City is not present`, 404);
     } else {
-        try { 
+        try {
             for (const cityId of cityIds) {
                 const response = await database.get(tables.CITIES_TABLE, {
                     id: cityId,
@@ -99,12 +99,13 @@ async function createListing(cityIds, payload, userId, roleId) {
     } else if (payload.description.length > 65535) {
         throw new AppError(`Length of Description cannot exceed 65535 characters`, 400);
     } else {
-        
+
         insertionData.description = checkDesc(payload.description);
     }
     if (payload.media) {
         insertionData.media = payload.media;
     }
+    let isPoll = false;
     let subcategory = false;
     if (!payload.categoryId) {
         throw new AppError(`Category is not present`, 400);
@@ -121,6 +122,8 @@ async function createListing(cityIds, payload, userId, roleId) {
                 throw new AppError(`Invalid Category '${payload.categoryId}' given`, 400);
             }
             if (data[0].noOfSubcategories > 0) subcategory = true;
+
+            isPoll = response.rows[0].id === categories.Polls;
         } catch (err) {
             throw new AppError(err);
         }
@@ -237,7 +240,7 @@ async function createListing(cityIds, payload, userId, roleId) {
                 insertionData.expiryDate = getDateInFormate(
                     new Date(
                         new Date(insertionData.createdAt).getTime() +
-              1000 * 60 * 60 * 24 * 14
+                        1000 * 60 * 60 * 24 * 14
                     )
                 );
             }
@@ -313,9 +316,35 @@ async function createListing(cityIds, payload, userId, roleId) {
                 listingId,
             });
 
+
+            // verify if the listing is a poll and has poll options
+            // verify if the poll options are less than or equal to 10
+            // verify the poll options is an array
+            // verify the poll options is not empty
+            // verify if the listing is a poll
+            if (isPoll) {
+                if (!payload.pollOptions || !Array.isArray(payload.pollOptions) || payload.pollOptions.length === 0) {
+                    throw new AppError(`Invalid Poll Options`, 400);
+                } else if(payload.pollOptions.length > 10){
+                    throw new AppError(`Poll options length cannot exceed 10`)
+                }else {
+                    // verify that no two poll options have the same title
+                    const pollOptions = payload.pollOptions.map((option) => option.title);
+                    if (new Set(pollOptions).size !== pollOptions.length) {
+                        throw new AppError(`Poll Options cannot have the same title`, 400);
+                    }
+                    for (const option of payload.pollOptions) {
+                        await database.create(tables.POLL_OPTIONS_TABLE, {
+                            listingId,
+                            title: option.title,
+                        }, cityId);
+                    }
+                }
+            }
             allResponses.push({
                 cityId: Number(cityId),
-                listingId })
+                listingId
+            })
 
             if (hasDefaultImage) {
                 addDefaultImage(cityId, listingId, payload.categoryId);
@@ -330,7 +359,7 @@ async function createListing(cityIds, payload, userId, roleId) {
                 await sendPushNotification.sendPushNotificationToAll(
                     "warnings",
                     "Eilmeldung",
-                    city.name + " - "+insertionData.title,
+                    city.name + " - " + insertionData.title,
                     { cityId: cityId.toString(), id: listingId.toString() }
                 );
             }
@@ -338,6 +367,7 @@ async function createListing(cityIds, payload, userId, roleId) {
 
         return allResponses;
     } catch (err) {
+        if (err instanceof AppError) throw err;
         throw new AppError(err);
     }
 }

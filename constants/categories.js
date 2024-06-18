@@ -36,6 +36,7 @@ if (process.env.APPLICATION === "WALDI") {
         officialnotification:16,
         AppointmentBooking: 18,
         DefectReporter: 19,
-        Applicants: 20
+        Applicants: 20,
+        Polls: 25
     }
 }
